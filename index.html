@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Marca Bavaria</title>
+    <!-- Incluye el CDN de Tailwind CSS para un estilo rápido y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom style for the white background */
+        body {
+            background-color: #fff; /* White background */
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom style for the circle container */
+        .circle-container {
+            width: 80vw;
+            height: 80vw;
+            max-width: 600px; /* Maximum size to prevent it from being too big on huge monitors */
+            max-height: 600px;
+            position: relative;
+        }
+        /* Styles for the buttons that form the circle */
+        .image-button {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .image-button:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        /* Styles for the container of the circle buttons */
+        .circle-buttons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        /* Responsive positioning of the button circle */
+        .circle-buttons .image-button:nth-child(1) { transform: rotate(0deg) translate(45vmin) rotate(0deg); }
+        .circle-buttons .image-button:nth-child(2) { transform: rotate(60deg) translate(45vmin) rotate(-60deg); }
+        .circle-buttons .image-button:nth-child(3) { transform: rotate(120deg) translate(45vmin) rotate(-120deg); }
+        .circle-buttons .image-button:nth-child(4) { transform: rotate(180deg) translate(45vmin) rotate(-180deg); }
+        .circle-buttons .image-button:nth-child(5) { transform: rotate(240deg) translate(45vmin) rotate(-240deg); }
+        .circle-buttons .image-button:nth-child(6) { transform: rotate(300deg) translate(45vmin) rotate(-300deg); }
+
+        /* Styles for the new square buttons */
+        .square-button {
+            transition: transform 0.2s ease-in-out;
+        }
+        .square-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Class for the background with a pattern */
+        .pattern-bg {
+            background-color: #fefefd;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 50L50 75L75 50L50 25Z' fill='%23e5e7eb' opacity='0.5'/%3E%3Cpath d='M10 35L35 60L60 35L35 10Z' fill='%23e5e7eb' opacity='0.3'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+    </style>
+</head>
+<body class="bg-[#fefefd] min-h-screen flex flex-col items-center justify-center p-4 text-black">
+
+    <!-- Main Interface (Original Cover) -->
+    <div id="main-interface" class="min-h-screen w-full flex items-center justify-center transition-all duration-500 ease-in-out">
+        <!-- Main container for the button circle and the logo -->
+        <div class="circle-container flex items-center justify-center relative">
+            <!-- Main image in the center of the circle -->
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Bavaria_%28Kolumbien%29_logo.svg/1168px-Bavaria_%28Kolumbien%29_logo.svg.png"
+                alt="Logo Bavaria"
+                class="w-64 md:w-80 lg:w-96 z-20"
+            >
+
+            <!-- Container for the buttons that surround the logo -->
+            <div class="circle-buttons">
+                <!-- Botón que lleva a la nueva interfaz -->
+                <button class="image-button" onclick="showInterface('new-interface')">
+                    <img src="https://www.cvtools.es/2100-large_default/senal-mopu-cuadrada-40-cm-normal-todos-los-pictogramas.jpg" alt="Botón">
+                </button>
+                <!-- Botones que ahora redirigen a la página de "Acerca de nosotros" en una nueva pestaña -->
+                <a href="https://www.bavaria.co/acerca-de-nosotros" target="_blank" class="image-button">
+                    <img src="https://www.cvtools.es/2100-large_default/senal-mopu-cuadrada-40-cm-normal-todos-los-pictogramas.jpg" alt="Botón">
+                </a>
+                <a href="https://www.bavaria.co/acerca-de-nosotros" target="_blank" class="image-button">
+                    <img src="https://www.cvtools.es/2100-large_default/senal-mopu-cuadrada-40-cm-normal-todos-los-pictogramas.jpg" alt="Botón">
+                </a>
+                <a href="https://www.bavaria.co/acerca-de-nosotros" target="_blank" class="image-button">
+                    <img src="https://www.cvtools.es/2100-large_default/senal-mopu-cuadrada-40-cm-normal-todos-los-pictogramas.jpg" alt="Botón">
+                </a>
+                <a href="https://www.bavaria.co/acerca-de-nosotros" target="_blank" class="image-button">
+                    <img src="https://www.cvtools.es/2100-large_default/senal-mopu-cuadrada-40-cm-normal-todos-los-pictogramas.jpg" alt="Botón">
+                </a>
+                <a href="https://www.bavaria.co/acerca-de-nosotros" target="_blank" class="image-button">
+                    <img src="https://www.cvtools.es/2100-large_default/senal-mopu-cuadrada-40-cm-normal-todos-los-pictogramas.jpg" alt="Botón">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Interface (hidden by default) -->
+    <div id="new-interface" class="hidden min-h-screen w-full flex flex-col items-center justify-center text-center transition-all duration-500 ease-in-out opacity-0">
+        <button onclick="showInterface('main-interface')" class="absolute top-4 left-4 text-black font-bold py-2 px-4 rounded-lg bg-gray-200 hover:bg-gray-300">
+            Regresar
+        </button>
+        <div class="w-full flex-1 flex flex-col items-center justify-center p-8 pattern-bg">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 text-[#e31b25] drop-shadow-md">ELEMENTOS DE IDENTIDAD</h1>
+            <p class="text-base sm:text-lg md:text-xl text-gray-700">Descubre los elementos fundamentales que construyen la identidad de Bavaria</p>
+        </div>
+        <div class="w-full flex-1 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 p-8 bg-[#e31b25] drop-shadow-lg">
+            <!-- Button 1 (White) -->
+            <button class="square-button w-full sm:w-64 h-24 rounded-xl flex items-center justify-center text-center font-bold text-xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-105 bg-[#fefefd] text-black" onclick="showInterface('logo-interface')">
+                <span class="text-xl">LOGO</span>
+            </button>
+            <!-- Button 2 (Black) -->
+            <button class="square-button w-full sm:w-64 h-24 rounded-xl flex items-center justify-center text-center font-bold text-xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-105 bg-[#000000] text-[#fefefd]" onclick="showInterface('slogan-interface')">
+                <span class="text-xl">LEMA</span>
+            </button>
+            <!-- Button 3 (White) -->
+            <button class="square-button w-full sm:w-64 h-24 rounded-xl flex items-center justify-center text-center font-bold text-xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-105 bg-[#fefefd] text-black" onclick="showInterface('font-color-interface')">
+                <span class="text-xl">TIPOGRAFÍA</span>
+            </button>
+            <!-- Button 4 (Black) -->
+            <button class="square-button w-full sm:w-64 h-24 rounded-xl flex items-center justify-center text-center font-bold text-xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-105 bg-[#000000] text-[#fefefd]" onclick="showInterface('color-interface')">
+                <span class="text-xl">COLOR</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Logo Interface (hidden by default) -->
+    <div id="logo-interface" class="hidden min-h-screen w-full flex flex-col sm:flex-row transition-all duration-500 ease-in-out opacity-0">
+        <!-- Left section with a red background -->
+        <div class="relative w-full sm:w-1/2 flex items-center justify-center p-8 bg-[#e31b25]">
+            <img 
+                src="https://i.pinimg.com/736x/76/bd/06/76bd062e96bce6bb867cfe843a61718e.jpg" 
+                alt="Conceptual design of the Bavaria logo" 
+                class="w-3/4 max-w-md rounded-lg border-8 border-white shadow-2xl"
+            >
+        </div>
+        
+        <!-- Right section with a white background and text -->
+        <div class="relative w-full sm:w-1/2 flex flex-col items-center justify-center p-8 pattern-bg text-black">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-[#e31b25] drop-shadow-md">LOGO</h2>
+            <p class="text-sm sm:text-base text-gray-700 max-w-full text-center">
+                El logo de Bavaria combina dos elementos: el logosímbolo, que es la gran "B" roja con un ave en la parte superior, y el logotipo, que es la palabra "Bavaria". Juntos forman una sola pieza que no se puede modificar ni redibujar.
+                <br><br>
+                El ave que aparece sobre la "B" tiene un fuerte vínculo con la historia de la empresa. Representa al águila Imperial alemana, un símbolo registrado en 1891 por los hermanos Leo y Emil Kopp, fundadores de la cervecería. El águila refleja fuerza, tradición y la herencia alemana que dio origen a Bavaria en 1889.
+            </p>
+        </div>
+
+        <button onclick="showInterface('new-interface')" class="absolute top-4 left-4 text-white font-bold py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">
+            Regresar
+        </button>
+    </div>
+
+    <!-- Slogan Interface (hidden by default) -->
+    <div id="slogan-interface" class="hidden min-h-screen w-full flex flex-col items-center justify-center transition-all duration-500 ease-in-out opacity-0">
+        <button onclick="showInterface('new-interface')" class="absolute top-4 left-4 text-black font-bold py-2 px-4 rounded-lg bg-gray-200 hover:bg-gray-300">
+            Regresar
+        </button>
+        <div class="w-full flex-1 flex flex-col items-center justify-center p-8 pattern-bg text-black text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-black drop-shadow-md">LEMA</h2>
+            <div class="bg-black text-white p-6 rounded-lg max-w-full">
+                <p class="text-sm sm:text-base">
+                    El lema de Bavaria es "Por un futuro con más motivos para brindar", el cual se vincula con su visión a largo plazo y su compromiso con Colombia. Más que un mensaje de celebración, busca transmitir la responsabilidad y sostenibilidad de la empresa, invitando a consumidores, aliados y colaboradores a construir juntos un mejor futuro. Según Samira Fadul, vicepresidenta de Asuntos Corporativos, este compromiso se refleja en acciones concretas como la gestión de residuos posconsumo y la promoción de festivales más sostenibles, formando parte de los momentos que la gente recuerda con alegría.
+                </p>
+            </div>
+        </div>
+        <div class="w-full flex-1 flex flex-col items-center justify-center p-8 pattern-bg">
+            <!-- The 'max-w-4xl' class makes the image larger -->
+            <img src="https://www.despejandodudas.co/images/2022/Noviembre/Bavaria_cambia_su_logo_4.png" alt="New Bavaria slogan and logo" class="w-full max-w-4xl rounded-lg shadow-xl">
+        </div>
+    </div>
+
+    <!-- Typography and Color Interface (hidden by default) -->
+    <div id="font-color-interface" class="hidden min-h-screen w-full flex flex-col sm:flex-row transition-all duration-500 ease-in-out opacity-0">
+        <!-- Left section with a black background and text -->
+        <div class="relative w-full sm:w-1/2 flex flex-col items-center justify-center p-8 bg-black text-white text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 drop-shadow-md">TIPOGRAFÍA</h2>
+            <p class="text-sm sm:text-base text-gray-300 max-w-full">
+                La tipografía del logotipo de Bavaria fue creada especialmente para la marca, por lo que no existe como una fuente comercial que se pueda descargar o usar libremente. Está diseñada a medida para acompañar la "B" con el águila, convirtiéndose en un elemento exclusivo de su identidad.
+                <br><br>
+                Su diseño es sans serif, con trazos limpios, gruesos y redondeados, lo que transmite solidez, modernidad y claridad en cualquier formato. Al igual que el símbolo, esta tipografía no puede modificarse ni redibujarse.
+                <br><br>
+                En campañas publicitarias y otros materiales, Bavaria suele usar tipografías sans serif comerciales que mantienen un estilo coherente con su imagen, pero el logotipo principal siempre conserva su tipografía exclusiva.
+            </p>
+        </div>
+
+        <!-- Right section with a white background and images -->
+        <div class="relative w-full sm:w-1/2 flex flex-col items-center justify-center p-8 pattern-bg">
+            <img 
+                src="https://www.designandpaper.com/wp-content/uploads/2025/02/serifcvssansserif_featured2-1314x877.jpg" 
+                alt="Serif vs Sans Serif" 
+                class="w-full max-w-sm rounded-lg shadow-xl mb-4"
+            >
+            <img 
+                src="https://www.bavaria.co/sites/g/files/seuoyk1666/files/inline-images/LogosBavaria-Negativo.png" 
+                alt="Bavaria negative logo" 
+                class="w-2/3 max-w-xs rounded-lg shadow-xl"
+            >
+        </div>
+
+        <button onclick="showInterface('new-interface')" class="absolute top-4 left-4 text-white font-bold py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">
+            Regresar
+        </button>
+    </div>
+    
+    <!-- Color Interface (corrected) -->
+    <div id="color-interface" class="hidden min-h-screen w-full flex flex-col items-center justify-center transition-all duration-500 ease-in-out opacity-0">
+        <button onclick="showInterface('new-interface')" class="absolute top-4 left-4 text-black font-bold py-2 px-4 rounded-lg bg-gray-200 hover:bg-gray-300">
+            Regresar
+        </button>
+        <div class="w-full flex-1 flex flex-col items-center justify-center p-8 pattern-bg text-black">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-[#e31b25] drop-shadow-md">COLOR</h2>
+            <p class="text-sm text-gray-700 max-w-full text-center">
+                El logotipo de Bavaria usa como color principal el rojo Pantone 485, aplicado en tinta directa; en CMYK se logra con 100% magenta y 100% amarillo, y en digital corresponde al código #EC1C24.
+                <br><br>
+                Existen versiones alternativas: el logo blanco se usa sobre fotos o videos cuando el rojo no se lee bien, y el negro solo para materiales en blanco y negro, textos legales o impresiones de baja calidad.
+                <br><br>
+                La paleta de colores complementaria acompaña la identidad visual, pero nunca debe aplicarse al logo; en esos fondos debe usarse la versión blanca. Finalmente, está prohibido encerrar el logotipo en un contenedor cuadrado.
+            </p>
+        </div>
+        
+        <div class="w-full flex-1 flex flex-col sm:flex-row items-center justify-center gap-4 p-8 bg-[#e31b25]">
+            <!-- Space for images the user will upload -->
+            <div class="w-full max-w-lg h-64 border-4 border-dashed border-gray-400 rounded-lg flex items-center justify-center text-gray-500 text-center">
+                Espacio para la imagen 1
+            </div>
+            <div class="w-full max-w-lg h-64 border-4 border-dashed border-gray-400 rounded-lg flex items-center justify-center text-gray-500 text-center">
+                Espacio para la imagen 2
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the desired interface and hide the others
+        function showInterface(id) {
+            const interfaces = ['main-interface', 'new-interface', 'logo-interface', 'slogan-interface', 'font-color-interface', 'color-interface'];
+            const currentInterface = interfaces.find(interfaceId => !document.getElementById(interfaceId).classList.contains('hidden'));
+            const targetInterface = document.getElementById(id);
+
+            if (currentInterface) {
+                const currentEl = document.getElementById(currentInterface);
+                currentEl.classList.add('opacity-0');
+                
+                // Waits for the exit animation to finish before changing the interface
+                setTimeout(() => {
+                    interfaces.forEach(interfaceId => {
+                        document.getElementById(interfaceId).classList.add('hidden');
+                        document.getElementById(interfaceId).classList.add('opacity-0'); // Ensures interfaces are hidden and transparent
+                    });
+
+                    targetInterface.classList.remove('hidden');
+                    // A small delay to allow the 'hidden' class to apply before starting the entrance transition
+                    setTimeout(() => {
+                        targetInterface.classList.remove('opacity-0');
+                    }, 10);
+                }, 500); // 500ms corresponds to the transition duration in the CSS
+            } else {
+                // For the first time the page loads, just show the interface without transition
+                interfaces.forEach(interfaceId => {
+                    document.getElementById(interfaceId).classList.add('hidden');
+                });
+                targetInterface.classList.remove('hidden');
+                setTimeout(() => {
+                    targetInterface.classList.remove('opacity-0');
+                }, 10);
+            }
+        }
+    </script>
+</body>
+</html>
