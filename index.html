@@ -20,6 +20,7 @@
             max-height: 600px;
             position: relative;
         }
+        
         /* Styles for the buttons that form the circle */
         .image-button {
             width: 100px;
@@ -36,6 +37,14 @@
             transform: scale(1.1);
             z-index: 10;
         }
+        /* Estilos para el efecto de clic en los botones circulares */
+        .image-button img {
+            transition: transform 0.1s ease-out; /* Transición rápida para el efecto de presión */
+        }
+        .image-button:active img {
+            transform: scale(0.85); /* Reduce la imagen un poco al hacer clic */
+        }
+        
         /* Styles for the container of the circle buttons */
         .circle-buttons {
             position: absolute;
@@ -51,6 +60,14 @@
         .circle-buttons .image-button:nth-child(4) { transform: rotate(180deg) translate(45vmin) rotate(-180deg); }
         .circle-buttons .image-button:nth-child(5) { transform: rotate(240deg) translate(45vmin) rotate(-240deg); }
         .circle-buttons .image-button:nth-child(6) { transform: rotate(300deg) translate(45vmin) rotate(-300deg); }
+
+        /* Estilos para el efecto de clic en el logo central */
+        .logo-link {
+            transition: transform 0.1s ease-out;
+        }
+        .logo-link:active {
+            transform: scale(0.95); /* Reduce el logo ligeramente al hacer clic */
+        }
 
         /* Styles for the new square buttons */
         .square-button {
@@ -75,11 +92,14 @@
         <!-- Main container for the button circle and the logo -->
         <div class="circle-container flex items-center justify-center relative">
             <!-- Main image in the center of the circle -->
-            <img
-                src="imagenes/imagen1.png"
-                alt="Logo Bavaria"
-                class="w-64 md:w-80 lg:w-96 z-20"
-            >
+            <!-- MODIFICACIÓN: Se agregó la clase 'logo-link' para el efecto de clic -->
+            <a href="https://alekza20.github.io/BriefGrupal/" target="_blank" class="logo-link w-64 md:w-80 lg:w-96 z-20 cursor-pointer flex items-center justify-center">
+                <img
+                    src="imagenes/imagen1.png"
+                    alt="Logo Bavaria"
+                    class="w-full"
+                >
+            </a>
 
             <!-- Container for the buttons that surround the logo -->
             <div class="circle-buttons">
@@ -116,7 +136,8 @@
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 text-[#e31b25] drop-shadow-md">ELEMENTOS DE IDENTIDAD</h1>
             <p class="text-xl sm:text-2xl md:text-3xl text-gray-700">Descubre los elementos fundamentales que construyen la identidad de Bavaria</p>
         </div>
-        <div class="w-full flex-1 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 p-8 bg-[#e31b25] drop-shadow-lg">
+        <!-- Contenedor de botones. Se agregó flex-wrap para acomodar 5 botones. -->
+        <div class="w-full flex-1 flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-4 sm:gap-6 p-8 bg-[#e31b25] drop-shadow-lg">
             <!-- Button 1 (White) -->
             <button class="square-button w-full sm:w-64 h-24 rounded-xl flex items-center justify-center text-center font-bold text-xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-105 bg-[#fefefd] text-black" onclick="showInterface('logo-interface')">
                 <span class="text-2xl">LOGO</span>
@@ -133,6 +154,11 @@
             <button class="square-button w-full sm:w-64 h-24 rounded-xl flex items-center justify-center text-center font-bold text-xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-105 bg-[#000000] text-[#fefefd]" onclick="showInterface('color-interface')">
                 <span class="text-2xl">COLOR</span>
             </button>
+            <!-- NUEVO BOTÓN: BRIEF (White) -->
+            <a href="https://alekza20.github.io/BriefIndividual/" target="_blank"
+               class="square-button w-full sm:w-64 h-24 rounded-xl flex items-center justify-center text-center font-bold text-xl shadow-xl transition-transform duration-200 ease-in-out transform hover:scale-105 bg-[#fefefd] text-black">
+                <span class="text-2xl">BRIEF</span>
+            </a>
         </div>
     </div>
 
